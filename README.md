@@ -6,3 +6,9 @@
 [Урок 2](https://valeriyrv.github.io/lesson_02/) - Все об условиях и циклах  
 [Урок 2: дополнительное задание](https://valeriyrv.github.io/lesson_02_addon_file/) - Все об условиях и циклах  
 [Урок 2: усложненное задание](https://valeriyrv.github.io/lesson_02_advanced/) - Все об условиях и циклах  
+[Урок 3](https://valeriyrv.github.io/lesson_03/) - Все о функциях  
+[Урок 3: усложненное задание](https://valeriyrv.github.io/lesson_03_advanced/) - Все о функциях  
+[Урок 4](https://valeriyrv.github.io/lesson_03/) - Объекты, массивы, псевдомассивы. Основы ООП  
+[Урок 4: усложненное задание](https://valeriyrv.github.io/lesson_03_advanced/) - Объекты, массивы, псевдомассивы. Основы ООП  
+[Урок 5](https://valeriyrv.github.io/lesson_03/) - Доступ к элементам на странице  
+[Урок 4: усложненное задание](https://valeriyrv.github.io/lesson_03_advanced/) - Доступ к элементам на странице  
