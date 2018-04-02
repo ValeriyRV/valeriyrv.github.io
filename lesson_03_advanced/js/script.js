@@ -4,8 +4,19 @@ str = str.charAt(0).toUpperCase() + str.substr(1);
 
 console.log(str);
 
-console.log(str.replace(/-/g, " "));
+str = str.replace(/-/g, " ");
 
+console.log(str);
+
+str = str.replace(/легким/g, "");
+let m=str.length;
+
+str = str.split("");
+str[m-2] = 'о';
+str[m-3] = 'о';
+str = str.join("");
+
+console.log(str);
 
 
 var arr = [20, 33, 1, "Человек", 2, 3];
