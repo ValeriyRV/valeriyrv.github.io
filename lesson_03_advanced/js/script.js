@@ -8,12 +8,13 @@ str = str.replace(/-/g, " ");
 
 console.log(str);
 
-str = str.replace(/легким/g, "");
+str = str.replace(/слишком/g, "");
 let m=str.length;
 
 str = str.split("");
+str[m-1] = '';
 str[m-2] = 'о';
-str[m-3] = 'о';
+str[m-8] = 'о';
 str = str.join("");
 
 console.log(str);
