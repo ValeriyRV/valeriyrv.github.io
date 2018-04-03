@@ -113,9 +113,7 @@ let mainList = {
 									return mainList.budget/30;
 				}
 
-
 };
-
 
 recruitEmployers();
 
@@ -123,24 +121,19 @@ chooseGoods();
 
 enterPrice();
 
-
-
 enterDiscount();
-
 
 priceCalculation();
 
-
-
 workTime(17);
 
-
+let k = dailyBudget()
 
 //console.log("Название вашего магазина:", mainList.shopName);
 //console.log("Массив shopGoods:", mainList.shopGoods);
 //console.log("Ваш бюджет за месяц:", mainList.budget);
-console.log("Ваш бюджет за день:", dailyBudget());
-console.log("Цена", price);
+console.log("Цена с учетом скидки", price);
+console.log("Ваш бюджет за день c округлением до целого числа:", Math.round(k));
 //console.log("Скидки", );
 
 console.log(mainList);
