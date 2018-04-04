@@ -11,4 +11,4 @@
 [Урок 4](https://valeriyrv.github.io/lesson_04/) - Объекты, массивы, псевдомассивы. Основы ООП  
 [Урок 4: усложненное задание](https://valeriyrv.github.io/lesson_04_advanced/) - Объекты, массивы, псевдомассивы. Основы ООП  
 [Урок 5](https://valeriyrv.github.io/lesson_05/) - Доступ к элементам на странице  
-[Урок 4: усложненное задание](https://valeriyrv.github.io/	/) - Доступ к элементам на странице  
+[Урок 4: усложненное задание](https://valeriyrv.github.io/lesson_05_addon/) - Доступ к элементам на странице  
