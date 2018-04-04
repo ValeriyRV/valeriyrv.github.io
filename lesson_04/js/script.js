@@ -13,7 +13,7 @@ function start() {
 				time = 19;
 }
 
-//start ();
+start ();
 
 let mainList = {
 			 budget: yourBudget,
@@ -123,48 +123,40 @@ let mainList = {
 
 				chooseShopItems: function chooseShopItems() {
 									let items;
-									while(isNaN(items) == false || items == "" || items == null) {
+									while(items == "" || items == null) {
 											items = prompt("Перечислите через запятую товары", "");
 									}
 
 									mainList.shopItems = items.split(",");
 									mainList.shopItems.push(prompt("Введите еще один товар", ""));
 									mainList.shopItems.sort();
-
-									
 				}
-				
-
 };
 
-//mainList.recruitEmployers();
 
-//mainList.chooseGoods();
+mainList.recruitEmployers();
 
-//mainList.enterPrice();
+mainList.chooseGoods();
 
-//mainList.enterDiscount();
+mainList.enterPrice();
+
+mainList.enterDiscount();
 
 mainList.priceCalculation();
 
 mainList.workTime(17);
 
+mainList.chooseShopItems();
+
 let k = mainList.dailyBudget();
 
 
-//console.log("Название вашего магазина:", mainList.shopName);
-//console.log("Массив shopGoods:", mainList.shopGoods);
-//console.log("Ваш бюджет за месяц:", mainList.budget);
+console.log("Название вашего магазина:", mainList.shopName);
+console.log("Массив shopGoods:", mainList.shopGoods);
+console.log("Ваш бюджет за месяц:", mainList.budget);
 
-
-/*console.log("Цена с учетом скидки", price);
-console.log("Ваш бюджет за день c округлением до целого числа:", Math.round(k));*/
-
-
-//console.log("Скидки", );
-
-
-mainList.chooseShopItems();
+console.log("Цена с учетом скидки", price);
+console.log("Ваш бюджет за день c округлением до целого числа:", Math.round(k));
 
 let items = mainList.shopItems;
 
