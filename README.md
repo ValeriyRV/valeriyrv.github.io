@@ -12,3 +12,13 @@
 [Урок 4: усложненное задание](https://valeriyrv.github.io/lesson_04_advanced/) - Объекты, массивы, псевдомассивы. Основы ООП  
 [Урок 5](https://valeriyrv.github.io/lesson_05/) - Доступ к элементам на странице  
 [Урок 5: дополнительное задание](https://valeriyrv.github.io/lesson_05_addon/) - Доступ к элементам на странице  
+[Урок 6](https://valeriyrv.github.io/lesson_06/) - События в JS, обработчики событий и особенности их работы  
+[Урок 7](https://valeriyrv.github.io/lesson_07/) - Скрипты и время выполнения. setTimeout и setInterval  
+[Урок 8](https://valeriyrv.github.io/lesson_08/) - Параметры документа, окна и работа с ними  
+[Урок 9](https://valeriyrv.github.io/lesson_09/) - Контекст вызова this
+[Урок 10](https://valeriyrv.github.io/lesson_10/) - Особенности современного стандарта. Тренды. Интерполяция  
+[Урок 11](https://valeriyrv.github.io/lesson_11/) - Работа с JSON, AJAX  
+[Урок 12](https://valeriyrv.github.io/lesson_12/) - Работа с JQuery, как устроена $. Современные библиотеки и фреймворки  
+[Урок 13](https://valeriyrv.github.io/lesson_13/) - Слайдер на чистом JS  
+[Урок 14](https://valeriyrv.github.io/lesson_14/) - Прием модуль. Зачем и как использовать  
+[Урок 15](https://valeriyrv.github.io/lesson_15/) - Дебаггинг и работа с отладчиком кода  
