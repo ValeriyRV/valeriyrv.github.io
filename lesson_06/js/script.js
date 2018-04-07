@@ -71,7 +71,7 @@ time_value.addEventListener('change', () => {
 								mainList.open = false;
 				};
 
-				if (mainList.open = true) {
+				if (mainList.open == true) {
 								isopen_value.style.backgroundColor = 'green';
 				} else {
 								isopen_value.style.backgroundColor = 'red';
