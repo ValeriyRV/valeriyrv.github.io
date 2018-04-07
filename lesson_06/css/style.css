@@ -1,0 +1,185 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+  height: 670px;
+  background: url(../img/bg.jpg) center no-repeat;
+  background-size: cover;
+  word-break: break-all;
+}
+.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #000;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+  width: 350px;
+  height: 100px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.open:before {
+  content: "";
+  display: block;
+  position: absolute;
+  -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+  width: 8px;
+  height: 20px;
+  background-color: #000;
+  margin: 0 auto;
+  -webkit-transform: translateY(-60px);
+          transform: translateY(-60px);
+}
+.open-btn {
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#127009), color-stop(#3b9932), to(#409e37));
+  background-image: linear-gradient(#127009, #3b9932, #409e37);
+  -webkit-box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.5);
+  border: 1px solid #fff;
+  border-radius: 8px;
+  width: 200px;
+  height: 50px;
+}
+.main {
+  width: 100%;
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.main-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  width: 550px;
+  min-height: 400px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.main-info .name,
+.main-info .name-value,
+.main-info .budget,
+.main-info .budget-value,
+.main-info .goods,
+.main-info .goods-value,
+.main-info .items,
+.main-info .items-value,
+.main-info .employers,
+.main-info .employers-value,
+.main-info .discount,
+.main-info .discount-value,
+.main-info .isopen,
+.main-info .isopen-value {
+  font-size: 20px;
+  width: 48%;
+  margin-top: 10px;
+  min-height: 47px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.main-info .isopen-value,
+.main-info .discount-value {
+  background-color: red;
+}
+.main-functions {
+  width: 550px;
+  min-height: 500px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.main-functions .choose-goods,
+.main-functions .choose-items,
+.main-functions .time,
+.main-functions .count-budget,
+.main-functions .hire-employers {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 20px;
+}
+.main-functions .goods-item {
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-left: 10px;
+  width: 49%;
+  height: 25px;
+}
+.main-functions .goods-item-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.main-functions .choose-item,
+.main-functions .time-value,
+.main-functions .count-budget-value {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-left: 10px;
+  width: 70%;
+  height: 25px;
+}
+.main-functions .time-value {
+  width: 30%;
+}
+.main-functions .count-budget-value {
+  width: 30%;
+  display: inline-block;
+  margin-left: 25%;
+}
+.main-functions .hire-employers-item {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-left: 10px;
+  width: 49%;
+  height: 25px;
+}
+.main-functions .hire-employers-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.main-functions-button {
+  width: 180px;
+  height: 27px;
+  cursor: pointer;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#127009), color-stop(#3b9932), to(#409e37));
+  background-image: linear-gradient(#127009, #3b9932, #409e37);
+  -webkit-box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  color: #fff;
+}
