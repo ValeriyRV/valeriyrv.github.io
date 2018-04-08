@@ -96,14 +96,14 @@ employers_btn.addEventListener('click', () => {
 				}
 });
 
-discount_radio_check[0].addEventListener('RadioStateChange', () => {
-				if (discount_radio_check[0].checked) {
-								discount_value.style.backgroundColor = 'green';
-								count_budget_value.value = (money / 30) * 0.8;
-				} else {
-								discount_value.style.backgroundColor = 'red';
-								count_budget_value.value = money / 30;
-				};
+discount_radio_check[0].addEventListener('click', () => {
+			discount_value.style.backgroundColor = 'green';
+			count_budget_value.value = (money / 30) * 0.8;
+});
+
+discount_radio_check[1].addEventListener('click', () => {
+				discount_value.style.backgroundColor = 'red';
+				count_budget_value.value = money / 30;
 });
 
 const mainList = {
