@@ -41,7 +41,7 @@ console.log(info);*/
 
 //Timer
 
-let deadline = '2018-03-20';
+let deadline = '2018-04-12';
 
 function getTimeRemaining(endtime) {
 	let t = Date.parse(endtime) - Date.parse(new Date()),
