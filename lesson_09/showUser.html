@@ -1,0 +1,40 @@
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+   	<meta charset="UTF-8">
+   	<title>Задание 9: дополнительное</title>
+   	<style>
+	   		div {
+	   			display: block;
+	   			text-align: center;
+	   			}
+	   			button {
+	   			display: block;
+	   			margin: 20px auto;
+	   			}
+	   			}
+   	</style>
+   </head>
+   <body>
+   	
+				<div>Введите возраст пользователя: <input id="age" value="32"></div>
+
+				<button>Показать сообщение</button>
+
+				<script>
+					let age = document.getElementById('age');
+					let btn = document.getElementsByTagName('button')[0];		
+
+					function showUser(surname, name) {
+													this.value = age.value;
+					        alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);					                
+					};
+					 
+					btn.addEventListener('click', () => {
+						showUser('Валерий','Рыжов');
+					});			
+					
+				</script>
+
+   </body>
+   </html>
