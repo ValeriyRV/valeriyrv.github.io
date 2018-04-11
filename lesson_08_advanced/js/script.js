@@ -84,32 +84,84 @@ function setClock(id, endtime) {
 };
 
 //Прокрутка документа
+
 let link_about = document.querySelector('.link-about');
 let link_photo = document.querySelector('.link-photo');
 let link_price = document.querySelector('.link-price');
 let link_contacts = document.querySelector('.link-contacts');
 
 link_about.onclick = function(event) {
-	event.preventDefault();
-	window.scrollTo(0,200);
+	event.preventDefault();	
+	 animate({
+        duration: 300,
+        timing: function(timeFraction) {
+          return timeFraction;
+        },
+        draw: function(progress) {          
+          window.scrollTo(0,progress * 600);
+        }
+      });
 };
 
 link_photo.onclick = function(event) {
-	event.preventDefault();
-	window.scrollTo(0,1800);
+	event.preventDefault();	
+	 animate({
+        duration: 1000,
+        timing: function(timeFraction) {
+          return timeFraction;
+        },
+        draw: function(progress) {          
+          window.scrollTo(0,progress * 1800);
+        }
+      });
 };
 
 link_price.onclick = function(event) {
-	event.preventDefault();
-	window.scrollTo(0,4500);
+	event.preventDefault();	
+	 animate({
+        duration: 2500,
+        timing: function(timeFraction) {
+          return timeFraction;
+        },
+        draw: function(progress) {          
+          window.scrollTo(0,progress * 4500);
+        }
+      });
 };
 
 link_contacts.onclick = function(event) {
-	event.preventDefault();
-	window.scrollTo(0,5200);
+	event.preventDefault();	
+	 animate({
+        duration: 2700,
+        timing: function(timeFraction) {
+          return timeFraction;
+        },
+        draw: function(progress) {          
+          window.scrollTo(0,progress * 5500);
+        }
+      });
 };
 
 
+function animate(options) {
 
+  var start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    // timeFraction от 0 до 1
+    var timeFraction = (time - start) / options.duration;
+    if (timeFraction > 1) timeFraction = 1;
+
+    // текущее состояние анимации
+    var progress = options.timing(timeFraction)
+
+    options.draw(progress);
+
+    if (timeFraction < 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}
 
 });
