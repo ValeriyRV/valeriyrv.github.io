@@ -93,7 +93,7 @@ let link_contacts = document.querySelector('.link-contacts');
 link_about.onclick = function(event) {
 	event.preventDefault();	
 	 animate({
-        duration: 300,
+        duration: 500,
         timing: function(timeFraction) {
           return timeFraction;
         },
@@ -106,7 +106,7 @@ link_about.onclick = function(event) {
 link_photo.onclick = function(event) {
 	event.preventDefault();	
 	 animate({
-        duration: 1000,
+        duration: 1400,
         timing: function(timeFraction) {
           return timeFraction;
         },
@@ -119,7 +119,7 @@ link_photo.onclick = function(event) {
 link_price.onclick = function(event) {
 	event.preventDefault();	
 	 animate({
-        duration: 2500,
+        duration: 3200,
         timing: function(timeFraction) {
           return timeFraction;
         },
@@ -132,7 +132,7 @@ link_price.onclick = function(event) {
 link_contacts.onclick = function(event) {
 	event.preventDefault();	
 	 animate({
-        duration: 2700,
+        duration: 3800,
         timing: function(timeFraction) {
           return timeFraction;
         },
