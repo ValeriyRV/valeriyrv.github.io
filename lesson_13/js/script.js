@@ -378,7 +378,7 @@ let modal_window_form = document.getElementsByClassName('main-form')[0],
 							restDays.addEventListener('change', function() {
 								daysSum = +this.value;
 								total = (daysSum + personsSum) * 4000;
-								if (restDays.value == '') {
+								if (persons.value == '') {
 									totalValue.innerHTML = 0;
 								} else {
 									totalValue.innerHTML = total;
@@ -391,7 +391,7 @@ let modal_window_form = document.getElementsByClassName('main-form')[0],
 								} else {
 									let a = total;									
 									totalValue.innerHTML = a * this.options[this.selectedIndex].value;
-								}
+								};
 							});
 
 
