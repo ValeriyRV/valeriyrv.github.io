@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	});
 
 //Timer
-let deadline = '2018-04-16';
+let deadline = '2018-04-18';
 
 setClock('timer', deadline);
 
@@ -90,20 +90,20 @@ let link_photo = document.querySelector('.link-photo');
 let link_price = document.querySelector('.link-price');
 let link_contacts = document.querySelector('.link-contacts');
 
-link_about.onclick = function(event) {
-	event.preventDefault();	
-	 animate({
-        duration: 300,
-        timing: function(timeFraction) {
-          return timeFraction;
-        },
-        draw: function(progress) {          
-          window.scrollTo(0,progress * 600);
-        }
-      });
-};
+link_about.addEventListener('click', function(event) {
+		event.preventDefault();	
+		 animate({
+	        duration: 300,
+	        timing: function(timeFraction) {
+	          return timeFraction;
+	        },
+	        draw: function(progress) {          
+	          window.scrollTo(0,progress * 600);
+	        }
+	      });
+});
 
-link_photo.onclick = function(event) {
+link_photo.addEventListener('click', function(event) {
 	event.preventDefault();	
 	 animate({
         duration: 1000,
@@ -114,9 +114,9 @@ link_photo.onclick = function(event) {
           window.scrollTo(0,progress * 1800);
         }
       });
-};
+});
 
-link_price.onclick = function(event) {
+link_price.addEventListener('click', function(event) {
 	event.preventDefault();	
 	 animate({
         duration: 2500,
@@ -124,12 +124,12 @@ link_price.onclick = function(event) {
           return timeFraction;
         },
         draw: function(progress) {          
-          window.scrollTo(0,progress * 4500);
+          window.scrollTo(0,progress * 4600);
         }
       });
-};
+});
 
-link_contacts.onclick = function(event) {
+link_contacts.addEventListener('click', function(event) {
 	event.preventDefault();	
 	 animate({
         duration: 2700,
@@ -140,7 +140,7 @@ link_contacts.onclick = function(event) {
           window.scrollTo(0,progress * 5500);
         }
       });
-};
+});
 
 
 function animate(options) {
@@ -207,6 +207,7 @@ close.addEventListener('click', function() {
 				overlay.style.display = "none";
 				popup.classList.remove('popup-slide');				
 				document.body.style.overflow = '';
+				statusMessage.innerHTML = '';
 });
 
 //Form
@@ -226,12 +227,7 @@ let modal_window_form = document.getElementsByClassName('main-form')[0],
 				statusMessage.style.color = "#ffffff"
 				statusMessage.style.paddingTop = "10px";
 
-
-
-				statusMessage.classList.add('status');
-
-				//console.log(contact_input);
-
+				statusMessage.classList.add('status');	
 
 				modal_window_form.addEventListener('submit', function(event) {
 								event.preventDefault();

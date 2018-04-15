@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	});
 
 //Timer
-let deadline = '2018-04-16';
+let deadline = '2018-04-18';
 
 setClock('timer', deadline);
 
@@ -90,20 +90,20 @@ let link_photo = document.querySelector('.link-photo');
 let link_price = document.querySelector('.link-price');
 let link_contacts = document.querySelector('.link-contacts');
 
-link_about.onclick = function(event) {
-	event.preventDefault();	
-	 animate({
-        duration: 300,
-        timing: function(timeFraction) {
-          return timeFraction;
-        },
-        draw: function(progress) {          
-          window.scrollTo(0,progress * 600);
-        }
-      });
-};
+link_about.addEventListener('click', function(event) {
+		event.preventDefault();	
+		 animate({
+	        duration: 300,
+	        timing: function(timeFraction) {
+	          return timeFraction;
+	        },
+	        draw: function(progress) {          
+	          window.scrollTo(0,progress * 600);
+	        }
+	      });
+});
 
-link_photo.onclick = function(event) {
+link_photo.addEventListener('click', function(event) {
 	event.preventDefault();	
 	 animate({
         duration: 1000,
@@ -114,9 +114,9 @@ link_photo.onclick = function(event) {
           window.scrollTo(0,progress * 1800);
         }
       });
-};
+});
 
-link_price.onclick = function(event) {
+link_price.addEventListener('click', function(event) {
 	event.preventDefault();	
 	 animate({
         duration: 2500,
@@ -124,12 +124,12 @@ link_price.onclick = function(event) {
           return timeFraction;
         },
         draw: function(progress) {          
-          window.scrollTo(0,progress * 4500);
+          window.scrollTo(0,progress * 4600);
         }
       });
-};
+});
 
-link_contacts.onclick = function(event) {
+link_contacts.addEventListener('click', function(event) {
 	event.preventDefault();	
 	 animate({
         duration: 2700,
@@ -140,8 +140,7 @@ link_contacts.onclick = function(event) {
           window.scrollTo(0,progress * 5500);
         }
       });
-};
-
+});
 
 function animate(options) {
 
@@ -207,6 +206,7 @@ close.addEventListener('click', function() {
 				overlay.style.display = "none";
 				popup.classList.remove('popup-slide');				
 				document.body.style.overflow = '';
+				statusMessage.innerHTML = '';
 });
 
 //Form
@@ -366,9 +366,9 @@ let modal_window_form = document.getElementsByClassName('main-form')[0],
 							totalValue.innerHTML = 0;
 
 							persons.addEventListener('change', function() {
-								personsSum = +this.value;
-								total = (daysSum + personsSum) * 4000;
-								if (restDays.value == '') {
+								personsSum = +this.value;								
+								total = (daysSum + personsSum) * 4000;								
+								if (this.value == '' || isNaN(parseInt(this.value)) == true || personsSum % 1 != 0 || daysSum % 1 != 0 || personsSum <= 0 || daysSum <= 0) {
 									totalValue.innerHTML = 0;
 								} else {
 									totalValue.innerHTML = total;
@@ -378,7 +378,7 @@ let modal_window_form = document.getElementsByClassName('main-form')[0],
 							restDays.addEventListener('change', function() {
 								daysSum = +this.value;
 								total = (daysSum + personsSum) * 4000;
-								if (persons.value == '') {
+								if (this.value == '' || isNaN(parseInt(this.value)) == true || personsSum % 1 != 0 || daysSum % 1 != 0 || personsSum <= 0 || daysSum <= 0) {
 									totalValue.innerHTML = 0;
 								} else {
 									totalValue.innerHTML = total;
@@ -386,13 +386,12 @@ let modal_window_form = document.getElementsByClassName('main-form')[0],
 							});
 
 							place.addEventListener('change', function() {
-								if (restDays.value == '' || persons.value == '') {
+								if (restDays.value == '' || isNaN(parseInt(restDays.value)) == true || personsSum % 1 != 0 || persons.value == '' || isNaN(parseInt(restDays.value)) == true || daysSum % 1 != 0 || personsSum <= 0 || daysSum <= 0) {
 									totalValue.innerHTML = 0;
 								} else {
-									let a = total;									
-									totalValue.innerHTML = a * this.options[this.selectedIndex].value;
+									let e = total;									
+									totalValue.innerHTML = e * this.options[this.selectedIndex].value;
 								};
 							});
-
 
 });
