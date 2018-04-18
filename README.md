@@ -26,3 +26,4 @@
 [Урок 13](https://valeriyrv.github.io/lesson_13/) - Слайдер на чистом JS  
 [Урок 14](https://valeriyrv.github.io/lesson_14/) - Прием модуль. Зачем и как использовать  
 [Урок 15](https://valeriyrv.github.io/lesson_15/) - Дебаггинг и работа с отладчиком кода  
+[Дипломная работа](https://valeriyrv.github.io/diploma/)  
