@@ -155,12 +155,19 @@ window.addEventListener('DOMContentLoaded', function() {
 				custom.style.display = 'none';
 				main.style.display = 'block';
 
-				let candidate_card = document.createElement('div');
+				//Создание карточки кандидата				
+				let candidate_card = document.createElement('div'),
+								candidate_card_block = document.createElement('div'),
+								candidate_card_block_photo = document.createElement('div');
 
-				candidate_card.innerHTML = "Какточка нового кандидата";
+				//candidate_card.innerHTML = "Какточка нового кандидата";
 
-				candidate_card.classList.add("main-cards-item");
-
+				candidate_card.classList.add("main-cards-item");				
+				candidate_card.appendChild(candidate_card_block);
+				candidate_card_block.classList.add("candidate-block");
+				candidate_card_block.appendChild(candidate_card_block_photo);
+				candidate_card_block_photo.classList.add("photo");
+				candidate_card_block_photo.classList.add("photo-3");
 				document.querySelector('.main-cards').appendChild(candidate_card);
 									
 				console.log(candidate);
