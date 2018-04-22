@@ -1,28 +1,167 @@
 window.addEventListener('DOMContentLoaded', function() {
 
-	overlay = document.querySelector('.overlay');
-	main = document.querySelector('.main');
+	let candidate = new Object();
 
-	custom = document.querySelector('.custom');
-	custom_info = document.querySelector('.custom-info');
-	custom_char = document.querySelector('.custom-char');
-	custom_style = document.querySelector('.custom-style');
+	let overlay = document.querySelector('.overlay'),
+					main = document.querySelector('.main'),
 
-	popup_btn = document.querySelector('.popup-btn');
+	    custom = document.querySelector('.custom'),
+	    custom_info = document.querySelector('.custom-info'),
+	    custom_char = document.querySelector('.custom-char'),
+	    custom_style = document.querySelector('.custom-style'),
 
-	reset = document.getElementById('reset');
-	voting = document.getElementById('voting');
-	crime = document.getElementById('crime');
+	    popup_btn = document.querySelector('.popup-btn'),
+
+	    reset = document.getElementById('reset'),
+	    voting = document.getElementById('voting'),
+	    crime = document.getElementById('crime'),
+
+	    
+	    
+	    
+
+	    ready_btn = document.getElementById('ready');
 
 	// Дествия при нажатии кнопки "Создать" в модальном окне "Создать своего кандидата"
 	popup_btn.addEventListener('click', function() {
-		overlay.style.display = 'none';
-		main.style.display = 'none';
-		custom.style.display = 'flex';
-		custom_info.style.display = 'block';
-		custom_char.style.display = 'block';
-		custom_style.style.display = 'block';
+			overlay.style.display = 'none';
+			main.style.display = 'none';
+			custom.style.display = 'flex';
+			custom_info.style.display = 'block';
+			custom_char.style.display = 'block';
+			custom_style.style.display = 'block';
 	});
+
+//Слайдер
+				let slideIndex = 1;
+								slides_female = ["img/construct-1.png","img/construct-2.png","img/construct-3.png","img/construct-4.png"],
+								slides_male = ["img/construct-5.png","img/construct-6.png","img/construct-7.png","img/construct-8.png"],
+								slides_gender = "male";
+								slider_preview = document.querySelector('.custom-style-easy .preview'),
+								slider_person = document.querySelector('.person-easy');
+								prev = document.querySelector('.prev'),
+								next = document.querySelector('.next');
+								female_radio_btn = document.getElementById('female');
+								male_radio_btn = document.getElementById('male');
+
+								slider_preview.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
+								slider_person.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
+
+					function showSlidesFemale(n) {
+									if (n > slides_female.length) {
+										slideIndex = 1;										
+									};
+									if (n < 1) {
+										slideIndex = slides_female.length;										
+									};
+									slider_preview.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')";
+									slider_person.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')";									
+								};
+
+					function showSlidesMale(n) {
+									if (n > slides_male.length) {
+										slideIndex = 1;										
+									};
+									if (n < 1) {
+										slideIndex = slides_male.length;										
+									};
+									slider_preview.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
+									slider_person.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";									
+								};			
+
+					function plusSlidesFemale (n) {
+						showSlidesFemale(slideIndex += n);
+					};
+
+					function plusSlidesMale (n) {
+						showSlidesMale(slideIndex += n);
+					};						
+
+					prev.addEventListener('click', function() {
+							if(document.getElementById('female').checked) {
+								plusSlidesFemale(-1);
+							} 
+							if(document.getElementById('male').checked) {
+								plusSlidesMale(-1);
+							} 													
+					});
+
+					next.addEventListener('click', function() {						
+							if(document.getElementById('female').checked) {
+								plusSlidesFemale(1);
+							} 
+							if(document.getElementById('male').checked) {
+								plusSlidesMale(1);
+							}
+					});
+
+					female_radio_btn.addEventListener('click', function() {
+						slider_preview.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')";
+						slider_person.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')";	
+					});
+
+					male_radio_btn.addEventListener('click', function() {
+						slider_preview.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
+						slider_person.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";	
+					});
+
+	// Дествия при нажатии кнопки "Готово" на экране выбора параметров кандидата
+	ready_btn.addEventListener('click', function() {
+
+				let full_name = document.getElementById('name').value,
+			    	age = document.getElementById('age').value,	
+			    	bio = document.getElementsByName('bio')[0].value;
+					
+				if ((typeof(full_name)) === 'string'  &&  (typeof(full_name)) !== null && full_name != '') {
+					 candidate.name = document.getElementById('name').value;
+				} else {
+						alert("Вы ввели фамилию имя отчество не правильно");
+				};
+				
+				if ((typeof(age)) === 'string'  &&  (typeof(age)) !== null && age != '')
+				{
+						if (isNaN(age) == true) {
+							alert("Вы не правильно указали возраст");
+						} else {
+							candidate.age = +document.getElementById('age').value;
+						}					
+				}
+				
+				if(document.getElementById('male').checked) {
+						candidate.gender = 'Мужской';			
+				} else if(document.getElementById('female').checked) {
+						candidate.gender = 'Женский';			
+				}		
+				
+				for (let i = 0; i < document.getElementById('select').options.length; i++)
+				{					
+						if (document.getElementById('select').options[0].selected) {
+							candidate.political_type = 'Либеральные';
+						}
+						if (document.getElementById('select').options[1].selected) {
+							candidate.political_type = 'Левые';
+						}
+						if (document.getElementById('select').options[2].selected) {
+							candidate.political_type = 'Правые';
+						}
+				}
+				
+				if ((typeof(bio)) === 'string'  &&  (typeof(bio)) !== null && bio != '') {
+					 candidate.bio = document.getElementsByName('bio')[0].value;
+				} else {
+						alert("Вы не правильно ввели биографию");
+				};
+				
+				custom.style.display = 'none';
+				main.style.display = 'block';
+					
+				//console.log("Текущие слайд: ",slideIndex);
+				console.log(candidate);
+				
+	});
+
+		
+	
 
 	// Дествия при нажатии кнопки "Сбросить результаты"
 	reset.addEventListener('click', function() {
