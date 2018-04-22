@@ -16,13 +16,12 @@ window.addEventListener('DOMContentLoaded', function() {
 	    voting = document.getElementById('voting'),
 	    crime = document.getElementById('crime'),
 
-	    
-	    
+	    	    
 	    
 
 	    ready_btn = document.getElementById('ready');
 
-	// Дествия при нажатии кнопки "Создать" в модальном окне "Создать своего кандидата"
+	// Обработчик нажатия кнопки "Создать" в модальном окне "Создать своего кандидата"
 	popup_btn.addEventListener('click', function() {
 			overlay.style.display = 'none';
 			main.style.display = 'none';
@@ -105,7 +104,7 @@ window.addEventListener('DOMContentLoaded', function() {
 						slider_person.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";	
 					});
 
-	// Дествия при нажатии кнопки "Готово" на экране выбора параметров кандидата
+	// Обработчик нажатия кнопки "Готово" на экране выбора параметров кандидата
 	ready_btn.addEventListener('click', function() {
 
 				let full_name = document.getElementById('name').value,
@@ -152,10 +151,18 @@ window.addEventListener('DOMContentLoaded', function() {
 						alert("Вы не правильно ввели биографию");
 				};
 				
+				//Скрыте экрана создания кандидата и показ главного экрана
 				custom.style.display = 'none';
 				main.style.display = 'block';
-					
-				//console.log("Текущие слайд: ",slideIndex);
+
+				let candidate_card = document.createElement('div');
+
+				candidate_card.innerHTML = "Какточка нового кандидата";
+
+				candidate_card.classList.add("main-cards-item");
+
+				document.querySelector('.main-cards').appendChild(candidate_card);
+									
 				console.log(candidate);
 				
 	});
