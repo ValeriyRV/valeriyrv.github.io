@@ -158,7 +158,17 @@ window.addEventListener('DOMContentLoaded', function() {
 				//Создание карточки кандидата				
 				let candidate_card = document.createElement('div'),
 								candidate_card_block = document.createElement('div'),
-								candidate_card_block_photo = document.createElement('div');
+								candidate_card_block_photo = document.createElement('div'),
+
+								candidate_card_block_result = document.createElement('div'),
+								candidate_card_block_result_count = document.createElement('div'),
+								candidate_card_block_result_progress = document.createElement('div'),
+								candidate_card_block_result_progress_bar = document.createElement('div'),
+								candidate_card_name = document.createElement('div'),
+								candidate_card_age = document.createElement('div'),
+								candidate_card_gender = document.createElement('div'),
+								candidate_card_views = document.createElement('div'),
+								candidate_card_bio = document.createElement('div');
 
 				//candidate_card.innerHTML = "Какточка нового кандидата";
 
@@ -168,6 +178,30 @@ window.addEventListener('DOMContentLoaded', function() {
 				candidate_card_block.appendChild(candidate_card_block_photo);
 				candidate_card_block_photo.classList.add("photo");
 				candidate_card_block_photo.classList.add("photo-3");
+
+				candidate_card_block.appendChild(candidate_card_block_result);
+				candidate_card_block_result.classList.add("result");
+				candidate_card_block_result.appendChild(candidate_card_block_result_count);
+				candidate_card_block_result_count.classList.add("result-count");
+
+				candidate_card_block_result.appendChild(candidate_card_block_result_progress);
+				candidate_card_block_result_progress.classList.add("progress");
+				candidate_card_block_result_progress.appendChild(candidate_card_block_result_progress_bar);
+				candidate_card_block_result_progress_bar.classList.add("progress-bar");
+				candidate_card_block_result_progress_bar.classList.add("progress-bar-2");
+				candidate_card.appendChild(candidate_card_name);
+				candidate_card_name.classList.add("name");
+				candidate_card.appendChild(candidate_card_age);
+				candidate_card_age.classList.add("age");
+				candidate_card.appendChild(candidate_card_gender);
+				candidate_card_gender.classList.add("sex");
+				candidate_card.appendChild(candidate_card_views);
+				candidate_card_views.classList.add("views");
+				candidate_card.appendChild(candidate_card_bio);
+				candidate_card_bio.classList.add("bio");
+
+				
+
 				document.querySelector('.main-cards').appendChild(candidate_card);
 									
 				console.log(candidate);
