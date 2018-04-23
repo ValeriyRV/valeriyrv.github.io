@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	    voting = document.getElementById('voting'),
 	    crime = document.getElementById('crime'),
 
-	    	    
+	    main_cards = document.querySelector('.main-cards');
 	    
 
 	    ready_btn = document.getElementById('ready');
@@ -168,10 +168,15 @@ window.addEventListener('DOMContentLoaded', function() {
 								candidate_card_age = document.createElement('div'),
 								candidate_card_gender = document.createElement('div'),
 								candidate_card_views = document.createElement('div'),
-								candidate_card_bio = document.createElement('div');
+								candidate_card_bio = document.createElement('div'),
+								candidate_card_text_1 = document.createElement('span');
+								candidate_card_text_2 = document.createElement('span');
+								candidate_card_text_3 = document.createElement('span');
 
-				//candidate_card.innerHTML = "Какточка нового кандидата";
+							
 
+						
+				main_cards.appendChild(candidate_card);
 				candidate_card.classList.add("main-cards-item");				
 				candidate_card.appendChild(candidate_card_block);
 				candidate_card_block.classList.add("candidate-block");
@@ -189,20 +194,53 @@ window.addEventListener('DOMContentLoaded', function() {
 				candidate_card_block_result_progress.appendChild(candidate_card_block_result_progress_bar);
 				candidate_card_block_result_progress_bar.classList.add("progress-bar");
 				candidate_card_block_result_progress_bar.classList.add("progress-bar-2");
+
 				candidate_card.appendChild(candidate_card_name);
 				candidate_card_name.classList.add("name");
+				candidate_card_name.innerHTML = candidate.name;
 				candidate_card.appendChild(candidate_card_age);
 				candidate_card_age.classList.add("age");
+				candidate_card_age.innerHTML = candidate.age + ' лет';
+
+				candidate_card.appendChild(candidate_card_text_1);
+				candidate_card_text_1.innerHTML = "Пол:";
 				candidate_card.appendChild(candidate_card_gender);
 				candidate_card_gender.classList.add("sex");
+				candidate_card_gender.innerHTML = candidate.gender;
+
+				candidate_card.appendChild(candidate_card_text_2);
+				candidate_card_text_2.innerHTML = "Полит взгляды:";
 				candidate_card.appendChild(candidate_card_views);
 				candidate_card_views.classList.add("views");
+				candidate_card_views.innerHTML = candidate.political_type;
+
+				candidate_card.appendChild(candidate_card_text_3);
+				candidate_card_text_3.innerHTML = "Биография";
 				candidate_card.appendChild(candidate_card_bio);
 				candidate_card_bio.classList.add("bio");
+				candidate_card_bio.innerHTML = candidate.bio;
+
+				let candidate_card_photo_3 = document.getElementsByClassName('photo-3')[0];
+				console.log(candidate_card_photo_3);
+
+				if(document.getElementById('female').checked) {
+				candidate_card_photo_3.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')";				
+				}
+				if(document.getElementById('male').checked) {
+					candidate_card_photo_3.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";	
+				}
+				candidate_card_photo_3.style.backgroundRepeat = 'no-repeat';
+				candidate_card_photo_3.style.backgroundSize = 'contain';
+
+								
+				
+				
+
+
 
 				
 
-				document.querySelector('.main-cards').appendChild(candidate_card);
+				
 									
 				console.log(candidate);
 				
