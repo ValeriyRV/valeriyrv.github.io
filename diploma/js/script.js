@@ -209,7 +209,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				candidate_card_gender.innerHTML = candidate.gender;
 
 				candidate_card.appendChild(candidate_card_text_2);
-				candidate_card_text_2.innerHTML = "Полит взгляды:";
+				candidate_card_text_2.innerHTML = "Полит. взгляды:";
 				candidate_card.appendChild(candidate_card_views);
 				candidate_card_views.classList.add("views");
 				candidate_card_views.innerHTML = candidate.political_type;
@@ -221,7 +221,6 @@ window.addEventListener('DOMContentLoaded', function() {
 				candidate_card_bio.innerHTML = candidate.bio;
 
 				let candidate_card_photo_3 = document.getElementsByClassName('photo-3')[0];
-				console.log(candidate_card_photo_3);
 
 				if(document.getElementById('female').checked) {
 				candidate_card_photo_3.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')";				
@@ -229,19 +228,10 @@ window.addEventListener('DOMContentLoaded', function() {
 				if(document.getElementById('male').checked) {
 					candidate_card_photo_3.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";	
 				}
+				candidate_card_photo_3.style.backgroundPosition = 'center center';
 				candidate_card_photo_3.style.backgroundRepeat = 'no-repeat';
 				candidate_card_photo_3.style.backgroundSize = 'contain';
-
-								
-				
-				
-
-
-
-				
-
-				
-									
+					
 				console.log(candidate);
 				
 	});
