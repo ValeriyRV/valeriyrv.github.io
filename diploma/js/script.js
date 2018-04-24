@@ -54,8 +54,7 @@ window.addEventListener('DOMContentLoaded', function() {
       political_type_list = document.getElementById('select'),      
 
       vote_index = 1,
-      fair_vote_index = 1,
-
+      
       ready_btn = document.getElementById('ready');      
       
   // Обработчик нажатия кнопки "Создать" в модальном окне "Создать своего кандидата"
@@ -274,24 +273,24 @@ window.addEventListener('DOMContentLoaded', function() {
 
         let err = 0;
           
-        if ((typeof(full_name.value)) === 'string'  &&  (typeof(full_name.value)) !== null && full_name.value != '' && isNaN(full_name.value) === true) {
+        if ((typeof(full_name.value)) === 'string'  &&  (typeof(full_name.value)) !== null && full_name.value != '' && isNaN(full_name.value) === true && full_name.value.length >= 8) {
            candidate.name = full_name.value;
            if (err == 0) {
             err = 0;
            };
         } else {
-            alert("Вы ввели фамилию имя отчество не правильно");
+            alert("Фамилия Имя Отчество должно быть длиной не менее 8 символов");
             err = 1;
         };
         
       
-        if ((typeof(age.value)) === 'string'  &&  (typeof(age.value)) !== null && age.value != '' && isNaN(age.value) === false && age.value >= 30 && age.value <= 100) {
+        if ((typeof(age.value)) === 'string'  &&  (typeof(age.value)) !== null && age.value != '' && isNaN(age.value) === false && age.value >= 30 && age.value <= 70) {
           candidate.age = +age.value;
           if (err == 0) {
             err = 0;
           };
         } else {
-          alert("Вы не правильно указали возраст");
+          alert("Возраст должен быть от 30 до 70 лет");
           err = 1;
         };
 
@@ -315,13 +314,13 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        if ((typeof(bio.value)) === 'string'  &&  (typeof(bio.value)) !== null && bio.value != '' && isNaN(bio.value) === true) {
+        if ((typeof(bio.value)) === 'string'  &&  (typeof(bio.value)) !== null && bio.value != '' && isNaN(bio.value) === true && bio.value.length >= 15) {
            candidate.bio = bio.value;
            if (err == 0) {
              err = 0;
            };
         } else {
-            alert("Вы не правильно ввели биографию");
+            alert("Биография должна содержать текст длиной не менее 15 символов");
             err = 1;
         };       
         
@@ -339,33 +338,27 @@ window.addEventListener('DOMContentLoaded', function() {
 
         console.log(candidate);
 
-        fair_vote_index = 0;
   });    
   
 
   // Дествия при нажатии кнопки "Сбросить результаты"
   reset.addEventListener('click', function() {
     resetCandidateResults();
-    resetVoteResults();
-    fair_vote_index = 0;
+    resetVoteResults();    
   });
 
   // Дествия при нажатии кнопки "Провести честное голосование"
-  voting.addEventListener('click', function() {
-    if(fair_vote_index == 0) {
+  voting.addEventListener('click', function() {   
       candidate_results[0] = 20;
       candidate_results[1] = 45;
       candidate_results[2] = 35;
       displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
       displayWinner();
-      vote_index = 0;
-    };    
-    fair_vote_index = 1;
+      vote_index = 0;    
   });
 
   // Дествия при нажатии кнопки "Вмешаться в выборы"
-  crime.addEventListener('click', function() {    
-    
+  crime.addEventListener('click', function() {      
     if (vote_index == 0) {
       candidate_results[0] = candidate_results[0] - 10;
       candidate_results[1] = candidate_results[1] - 15;
