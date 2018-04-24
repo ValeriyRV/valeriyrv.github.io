@@ -290,7 +290,7 @@ window.addEventListener('DOMContentLoaded', function() {
             err = 0;
           };
         } else {
-          alert("Возраст должен быть от 30 до 70 лет");
+          alert("Возраст кандидата не должен быть менее, чем 35 лет и более, чем 70 лет");
           err = 1;
         };
 
