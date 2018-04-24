@@ -285,7 +285,7 @@ window.addEventListener('DOMContentLoaded', function() {
         };
         
       
-        if ((typeof(age.value)) === 'string'  &&  (typeof(age.value)) !== null && age.value != '' && isNaN(age.value) === false) {
+        if ((typeof(age.value)) === 'string'  &&  (typeof(age.value)) !== null && age.value != '' && isNaN(age.value) === false && age.value >= 30 && age.value <= 100) {
           candidate.age = +age.value;
           if (err == 0) {
             err = 0;
