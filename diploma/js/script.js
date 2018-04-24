@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function() {
 
   let candidate = new Object(),
-      first_candidate_
+      candidate_results = [];     
 
       overlay = document.querySelector('.overlay'),
       main = document.querySelector('.main'),
@@ -44,11 +44,17 @@ window.addEventListener('DOMContentLoaded', function() {
       slider_person = document.querySelector('.person-easy');
       prev = document.querySelector('.prev'),
       next = document.querySelector('.next'),
+
+      full_name = document.getElementById('name'),
+      age = document.getElementById('age'),
+      bio = document.getElementsByName('bio')[0],
+
       female_radio_btn = document.getElementById('female'),
-      male_radio_btn = document.getElementById('male'),      
+      male_radio_btn = document.getElementById('male'),
+      political_type_list = document.getElementById('select'),      
 
-      ready_btn = document.getElementById('ready');
-
+      ready_btn = document.getElementById('ready');      
+      
   // Обработчик нажатия кнопки "Создать" в модальном окне "Создать своего кандидата"
   popup_btn.addEventListener('click', function() {
       overlay.style.display = 'none';
@@ -72,20 +78,20 @@ window.addEventListener('DOMContentLoaded', function() {
     candidate_card_block.appendChild(candidate_card_block_result);
     candidate_card_block_result.classList.add("result");
     candidate_card_block_result.appendChild(candidate_card_block_result_count);
-    candidate_card_block_result_count.classList.add("result-count");
+    candidate_card_block_result_count.classList.add("result-count");    
 
     candidate_card_block_result.appendChild(candidate_card_block_result_progress);
     candidate_card_block_result_progress.classList.add("progress");
     candidate_card_block_result_progress.appendChild(candidate_card_block_result_progress_bar);
     candidate_card_block_result_progress_bar.classList.add("progress-bar");
-    candidate_card_block_result_progress_bar.classList.add("progress-bar-2");
+    candidate_card_block_result_progress_bar.classList.add("progress-bar-3");
 
     candidate_card.appendChild(candidate_card_name);
     candidate_card_name.classList.add("name");
     candidate_card_name.innerHTML = candidate.name;
     candidate_card.appendChild(candidate_card_age);
     candidate_card_age.classList.add("age");
-    candidate_card_age.innerHTML = candidate.age + ' лет';
+    candidate_card_age.innerHTML = candidate.age + ' лет';    
 
     candidate_card.appendChild(candidate_card_text_1);
     candidate_card_text_1.innerHTML = "Пол:";
@@ -118,17 +124,82 @@ window.addEventListener('DOMContentLoaded', function() {
     candidate_card_photo_3.style.backgroundSize = 'contain';      
   }; 
 
+  //Функкия сброса результатов голосов кандидатов
+  function resetCandidateResults() {
+    let main_cards_item = document.getElementsByClassName('main-cards-item');
 
+    for(let i = 0; i < 3; i++) {
+      candidate_results[i] = 0;
+      main_cards_item[i].classList.remove('main-cards-item-active');
+    };           
+    
+  };
 
-  //Слайдер
-  function resetSlides() {
+  //Функция сброса результатов голосования
+  function resetVoteResults() {
+    candidate.name = '';
+    candidate.age = 0;
+    candidate.gender = '';
+    candidate.political_type = '';
+    candidate.bio = '';
+    slideIndex = 1;
+    slider_preview.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
+    slider_person.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
+    full_name.value = '';
+    age.value = '';
+    male_radio_btn.checked = true;
+    political_type_list.options[0].selected = true;
+    bio.value = '';
+    main_cards.lastChild.remove();    
+    main.style.display = 'none';
+    custom.style.display = 'flex';
+  };
+
+  //Функция отображения победителя голосования
+  function displayWinner() {
+    let main_cards_item = document.getElementsByClassName('main-cards-item'),
+        a = candidate_results[0],
+        b = 0;
+    
+    for(let i = 0; i < main_cards_item.length; i ++) {
+      main_cards_item[i].classList.remove('main-cards-item-active');
+      if (candidate_results[i] > a) {
+        a = candidate_results[i];
+        b = i;
+      };     
+    };    
+    main_cards_item[b].classList.add('main-cards-item-active');
+  };
+
+  //Функция отображения результатов голосования
+  function displayVoteResults(first,second,third) {
+    let result_count = document.getElementsByClassName('result-count'),
+        
+        first_candidate_progress_bar = document.querySelector('.progress-bar-1'),
+        second_candidate_progress_bar = document.querySelector('.progress-bar-2'),
+        third_candidate_progress_bar = document.querySelector('.progress-bar-3');
+    
+    result_count[0].innerHTML = first + ' %';
+    result_count[1].innerHTML = second + ' %';
+    result_count[2].innerHTML = third + ' %';
+
+    first_candidate_progress_bar.style.height = first+"%";  
+    second_candidate_progress_bar.style.height = second+"%";
+    third_candidate_progress_bar.style.height = third+"%"; 
+
+        
+  };  
+
+  //Слйдер
+  //Функция отрисовки начальных ихображений слайдера
+  function initialSlides() {
     slider_preview.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
     slider_person.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
   };
 
-  resetSlides();
+  initialSlides();
         
-
+  //Функция отображения изображений слайдера, когда выбран женский пол кандидата
   function showSlidesFemale(n) {
           if (n > slides_female.length) {
             slideIndex = 1;                   
@@ -140,6 +211,7 @@ window.addEventListener('DOMContentLoaded', function() {
           slider_person.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')";                 
         };
 
+  //Функция отображения изображений слайдера, когда выбран мужской пол кандидата    
   function showSlidesMale(n) {
           if (n > slides_male.length) {
             slideIndex = 1;                   
@@ -151,14 +223,17 @@ window.addEventListener('DOMContentLoaded', function() {
           slider_person.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";                 
         };      
 
+  //Функция показа следующего слайда, когда выбран женский пол кандидата      
   function plusSlidesFemale (n) {
     showSlidesFemale(slideIndex += n);
   };
 
+  //Функция показа следующего слайда, когда выбран мужской пол кандидата 
   function plusSlidesMale (n) {
     showSlidesMale(slideIndex += n);
   };            
 
+  //Обработчик нажатия кнопки предыдущего слайда
   prev.addEventListener('click', function() {
       if(document.getElementById('female').checked) {
         plusSlidesFemale(-1);
@@ -168,6 +243,7 @@ window.addEventListener('DOMContentLoaded', function() {
       }                           
   });
 
+  //Обработчик нажатия кнопки следующего слайда
   next.addEventListener('click', function() {           
       if(document.getElementById('female').checked) {
         plusSlidesFemale(1);
@@ -177,11 +253,13 @@ window.addEventListener('DOMContentLoaded', function() {
       }
   });
 
+  //Обработчик переключения слайдера, когда выбран женский пол кандидата 
   female_radio_btn.addEventListener('click', function() {
     slider_preview.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')";
     slider_person.style.backgroundImage = "url('"+slides_female[slideIndex - 1]+"')"; 
   });
 
+  //Обработчик переключения слайдера, когда выбран мужской пол кандидата
   male_radio_btn.addEventListener('click', function() {
     slider_preview.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')";
     slider_person.style.backgroundImage = "url('"+slides_male[slideIndex - 1]+"')"; 
@@ -190,13 +268,13 @@ window.addEventListener('DOMContentLoaded', function() {
   // Обработчик нажатия кнопки "Готово" на экране выбора параметров кандидата
   ready_btn.addEventListener('click', function() {
 
-        let full_name = document.getElementById('name').value,
-            age = document.getElementById('age').value, 
-            bio = document.getElementsByName('bio')[0].value,
+        let 
+            
+            
             err = 0;
           
-        if ((typeof(full_name)) === 'string'  &&  (typeof(full_name)) !== null && full_name != '') {
-           candidate.name = document.getElementById('name').value;
+        if ((typeof(full_name.value)) === 'string'  &&  (typeof(full_name.value)) !== null && full_name.value != '') {
+           candidate.name = full_name.value;
            if (err == 0) {
             err = 0;
            };
@@ -206,8 +284,8 @@ window.addEventListener('DOMContentLoaded', function() {
         };
         
       
-        if ((typeof(age)) === 'string'  &&  (typeof(age)) !== null && age != '' && isNaN(age) === false) {
-          candidate.age = +document.getElementById('age').value;
+        if ((typeof(age.value)) === 'string'  &&  (typeof(age.value)) !== null && age.value != '' && isNaN(age.value) === false) {
+          candidate.age = +age.value;
           if (err == 0) {
             err = 0;
           };
@@ -223,28 +301,28 @@ window.addEventListener('DOMContentLoaded', function() {
             candidate.gender = 'Женский';     
         }   
         
-        for (let i = 0; i < document.getElementById('select').options.length; i++)
+        for (let i = 0; i < political_type_list.options.length; i++)
         {         
-            if (document.getElementById('select').options[0].selected) {
+            if (political_type_list.options[0].selected) {
               candidate.political_type = 'Либеральные';
             }
-            if (document.getElementById('select').options[1].selected) {
+            if (political_type_list.options[1].selected) {
               candidate.political_type = 'Левые';
             }
-            if (document.getElementById('select').options[2].selected) {
+            if (political_type_list.options[2].selected) {
               candidate.political_type = 'Правые';
             }
         }
         
-        if ((typeof(bio)) === 'string'  &&  (typeof(bio)) !== null && bio != '') {
-           candidate.bio = document.getElementsByName('bio')[0].value;
+        if ((typeof(bio.value)) === 'string'  &&  (typeof(bio.value)) !== null && bio.value != '') {
+           candidate.bio = bio.value;
            if (err == 0) {
              err = 0;
            };
         } else {
             alert("Вы не правильно ввели биографию");
             err = 1;
-        };
+        };       
         
         //Скрыте экрана создания кандидата и показ главного экрана
         if (err == 0) {
@@ -252,26 +330,46 @@ window.addEventListener('DOMContentLoaded', function() {
           main.style.display = 'block';
         };
         
-        candidateCardCreate();           
-          
+        candidateCardCreate();  
+
+        resetCandidateResults();
+
+        displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
+
         console.log(candidate);
-        
   });    
   
 
   // Дествия при нажатии кнопки "Сбросить результаты"
   reset.addEventListener('click', function() {
-    console.log(reset);
+    resetCandidateResults();
+    resetVoteResults();
   });
 
   // Дествия при нажатии кнопки "Провести честное голосование"
   voting.addEventListener('click', function() {
-    console.log(voting);
+    candidate_results[0] = 20;
+    candidate_results[1] = 45;
+    candidate_results[2] = 35;
+
+    displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
+    displayWinner(); 
   });
 
   // Дествия при нажатии кнопки "Вмешаться в выборы"
   crime.addEventListener('click', function() {
-    console.log(crime);
+    let a = 0,
+        b = 0;
+
+    a = (candidate_results[2]/100) * 25;
+    b = a/2;
+    
+    candidate_results[0] = candidate_results[0] - b;
+    candidate_results[1] = candidate_results[1] - b;
+    candidate_results[2] = candidate_results[2] + a;
+    
+    displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
+    displayWinner();
   });
 
 });
