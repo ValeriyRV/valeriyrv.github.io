@@ -53,6 +53,8 @@ window.addEventListener('DOMContentLoaded', function() {
       male_radio_btn = document.getElementById('male'),
       political_type_list = document.getElementById('select'),      
 
+      vote_index = 0;
+
       ready_btn = document.getElementById('ready');      
       
   // Обработчик нажатия кнопки "Создать" в модальном окне "Создать своего кандидата"
@@ -137,6 +139,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   //Функция сброса результатов голосования
   function resetVoteResults() {
+    vote_index = 0
     candidate.name = '';
     candidate.age = 0;
     candidate.gender = '';
@@ -359,13 +362,14 @@ window.addEventListener('DOMContentLoaded', function() {
   // Дествия при нажатии кнопки "Вмешаться в выборы"
   crime.addEventListener('click', function() {    
     
-    candidate_results[2] = candidate_results[2] + a;
-    candidate_results[0] = candidate_results[0] - 10;
-    candidate_results[1] = candidate_results[1] - 15;
-    candidate_results[2] = candidate_results[2] + 25;
-    
-    displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
-    displayWinner();
+    if (vote_index == 0) {
+      candidate_results[0] = candidate_results[0] - 10;
+      candidate_results[1] = candidate_results[1] - 15;
+      candidate_results[2] = candidate_results[2] + 25;
+      displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
+      displayWinner();
+    };   
+    vote_index = 1;
   });
 
 });
