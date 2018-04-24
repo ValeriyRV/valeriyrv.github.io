@@ -53,7 +53,8 @@ window.addEventListener('DOMContentLoaded', function() {
       male_radio_btn = document.getElementById('male'),
       political_type_list = document.getElementById('select'),      
 
-      vote_index = 0;
+      vote_index = 1,
+      fair_vote_index = 1,
 
       ready_btn = document.getElementById('ready');      
       
@@ -139,7 +140,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   //Функция сброса результатов голосования
   function resetVoteResults() {
-    vote_index = 0
+    
     candidate.name = '';
     candidate.age = 0;
     candidate.gender = '';
@@ -271,12 +272,9 @@ window.addEventListener('DOMContentLoaded', function() {
   // Обработчик нажатия кнопки "Готово" на экране выбора параметров кандидата
   ready_btn.addEventListener('click', function() {
 
-        let 
-            
-            
-            err = 0;
+        let err = 0;
           
-        if ((typeof(full_name.value)) === 'string'  &&  (typeof(full_name.value)) !== null && full_name.value != '') {
+        if ((typeof(full_name.value)) === 'string'  &&  (typeof(full_name.value)) !== null && full_name.value != '' && isNaN(full_name.value) === true) {
            candidate.name = full_name.value;
            if (err == 0) {
             err = 0;
@@ -317,7 +315,7 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        if ((typeof(bio.value)) === 'string'  &&  (typeof(bio.value)) !== null && bio.value != '') {
+        if ((typeof(bio.value)) === 'string'  &&  (typeof(bio.value)) !== null && bio.value != '' && isNaN(bio.value) === true) {
            candidate.bio = bio.value;
            if (err == 0) {
              err = 0;
@@ -340,6 +338,8 @@ window.addEventListener('DOMContentLoaded', function() {
         displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
 
         console.log(candidate);
+
+        fair_vote_index = 0;
   });    
   
 
@@ -347,16 +347,20 @@ window.addEventListener('DOMContentLoaded', function() {
   reset.addEventListener('click', function() {
     resetCandidateResults();
     resetVoteResults();
+    fair_vote_index = 0;
   });
 
   // Дествия при нажатии кнопки "Провести честное голосование"
   voting.addEventListener('click', function() {
-    candidate_results[0] = 20;
-    candidate_results[1] = 45;
-    candidate_results[2] = 35;
-
-    displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
-    displayWinner(); 
+    if(fair_vote_index == 0) {
+      candidate_results[0] = 20;
+      candidate_results[1] = 45;
+      candidate_results[2] = 35;
+      displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
+      displayWinner();
+      vote_index = 0;
+    };    
+    fair_vote_index = 1;
   });
 
   // Дествия при нажатии кнопки "Вмешаться в выборы"
