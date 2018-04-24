@@ -357,16 +357,12 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   // Дествия при нажатии кнопки "Вмешаться в выборы"
-  crime.addEventListener('click', function() {
-    let a = 0,
-        b = 0;
-
-    a = (candidate_results[2]/100) * 25;
-    b = a/2;
+  crime.addEventListener('click', function() {    
     
-    candidate_results[0] = candidate_results[0] - b;
-    candidate_results[1] = candidate_results[1] - b;
     candidate_results[2] = candidate_results[2] + a;
+    candidate_results[0] = candidate_results[0] - 10;
+    candidate_results[1] = candidate_results[1] - 15;
+    candidate_results[2] = candidate_results[2] + 25;
     
     displayVoteResults(candidate_results[0],candidate_results[1],candidate_results[2]);
     displayWinner();
